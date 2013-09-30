@@ -39,12 +39,12 @@ place_types:
     focused: dropper-yellow
     label: _(Problems to solve)
   preserve:
-    default: blue
-    focused: red
+    default: puck-green
+    focused: dropper-green
     label: _(Assets to preserve)
   idea:
-    default: blue
-    focused: red
+    default: puck-purple
+    focused: dropper-purple
     label: _(An idea I have)
 # Defines place icons. See http://leaflet.cloudmade.com/reference.html#icon
 # for documention of each property. Any omitted property will be undefined.
