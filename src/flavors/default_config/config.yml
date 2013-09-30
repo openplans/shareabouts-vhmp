@@ -1,11 +1,11 @@
 # Settings for the app
 app:
   # HTML Title
-  title: Shareabouts
+  title: Virginia-Highland Master Plan 
   # Header name
-  name: Shareabouts
+  name: Virginia-Highland Master Plan 
   # Meta description that will show up in Google search results
-  meta_description: _(Shareabouts is a mapping tool to gather crowd sourced public input. Use it to collect suggested locations and comments in a social, engaging process.)
+  meta_description: _(Use the map to record and share the things you love about Virginia-Highland and the things you want to see changed or fixed in Virginia-Highland.)
 
 # Settings for map and layer configs
 map:
@@ -26,19 +26,26 @@ map:
 # The keys show up in the dropdown list when you are adding a new place
 # The values map the place type to map icons (defined below).
 place_types:
-  landmark:
+  love:
     default: blue
     focused: red
-    label: _(Landmark)
-  park:
+    label: _(Things I love)
+  hate:
     default: blue
     focused: red
-    label: _(Park)
-  school:
+    label: _(Things I hate)
+  solve:
     default: blue
     focused: red
-    label: _(School)
-
+    label: _(Problems to solve)
+  preserve:
+    default: blue
+    focused: red
+    label: _(Assets to preserve)
+  idea:
+    default: blue
+    focused: red
+    label: _(An idea I have)
 # Defines place icons. See http://leaflet.cloudmade.com/reference.html#icon
 # for documention of each property. Any omitted property will be undefined.
 place_type_icons:
@@ -72,14 +79,28 @@ activity:
 
 place:
   adding_supported: true
-  add_button_label: _(Add a Place)
+  add_button_label: _(Share what you know)
   action_text: _(added)
   title: _(Tell us more...)
-  action_text: _(created)
+  action_text: _(identified)
   anonymous_name: _(Someone)
   submit_button_label: _(Submit)
   items:
-    - prompt: _(Location Name)
+    - prompt: _(What's your comment?)
+      type: select
+      options:
+        - label: _(Something I love)
+          value: love
+        - label: _(Something I hate)
+          value: hate
+        - label: _(A problem to solve)
+          value: solve
+        - label: _(An asset to preserve)
+          value: preserve
+        - label: _(An idea I have!)
+          value: idea
+      name: location_type
+    - prompt: _(Where is it?)
       type: text
       name: name
       attrs:
@@ -87,31 +108,18 @@ place:
           value: _(Location Name)
         - key: size
           value: 30
-    - prompt: _(Location Type)
-      type: select
-      options:
-        - label: _(Landmark)
-          value: landmark
-        - label: _(Park)
-          value: park
-        - label: _(School)
-          value: school
-      name: location_type
-    - prompt: _(Image)
-      inputfile_label: _(Add an Image)
-      type: file
-      name: my_image
-      optional: true
-      attrs:
-        - key: accept
-          value: image/*
-    - prompt: _(Description)
+    - prompt: _(What is it you like or dislike?)
       type: textarea
       name: description
-      optional: true
       attrs:
         - key: placeholder
           value: _(Description...)
+    - prompt: _(What's your idea or suggestion?)
+      type: textarea
+      name: description
+      attrs:
+        - key: placeholder
+          value: _(Your idea/suggestion)
     - prompt: _(Your Name)
       type: text
       name: submitter_name
@@ -121,7 +129,24 @@ place:
           value: _(Name)
         - key: size
           value: 30
-
+    - prompt: _(Your email (will not be shown on the map))
+      type: text
+      name: private-submitter_email
+      optional: true
+      attrs:
+        - key: placeholder
+          value: _(Your email)
+        - key: size
+          value: 30
+    - prompt: _(Your address (will not be shown on the map))
+      type: text
+      name: private-submitter_address
+      optional: true
+      attrs:
+        - key: placeholder
+          value: _(Your address)
+        - key: size
+          value: 30
 survey:
   submission_type: comments
 
@@ -156,15 +181,3 @@ pages:
     slug: about
     name: overview
     start_page: true
-
-  - title: _(Why Shareabouts?)
-    slug: why
-    url: /static/pages/why.html
-
-  - title: _(Features)
-    slug: features
-    url: /static/pages/features.html
-
-  - title: _(GitHub)
-    external: true
-    url: https://github.com/openplans/shareabouts
