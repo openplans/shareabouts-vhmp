@@ -27,16 +27,16 @@ map:
 # The values map the place type to map icons (defined below).
 place_types:
   love:
-    default: blue
-    focused: red
+    default: puck-red
+    focused: dropper-red
     label: _(Things I love)
   hate:
-    default: blue
-    focused: red
+    default: puck-blue
+    focused: dropper-blue
     label: _(Things I hate)
   solve:
-    default: blue
-    focused: red
+    default: puck-yellow
+    focused: dropper-yellow
     label: _(Problems to solve)
   preserve:
     default: blue
@@ -49,16 +49,96 @@ place_types:
 # Defines place icons. See http://leaflet.cloudmade.com/reference.html#icon
 # for documention of each property. Any omitted property will be undefined.
 place_type_icons:
-  blue:
-    iconUrl: /static/css/images/feature-point.png
+  puck-green:
+    iconUrl: /static/css/images/markers/dot-70d52c.png
     iconSize:
       width: 17
       height: 18
     iconAnchor:
       x: 9
       y: 9
-  red:
-    iconUrl: /static/css/images/marker-focused.png
+  puck-blue:
+    iconUrl: /static/css/images/markers/dot-2654d2.png
+    iconSize:
+      width: 17
+      height: 18
+    iconAnchor:
+      x: 9
+      y: 9
+  puck-yellow:
+    iconUrl: /static/css/images/markers/dot-dbcf2c.png
+    iconSize:
+      width: 17
+      height: 18
+    iconAnchor:
+      x: 9
+      y: 9
+  puck-red:
+    iconUrl: /static/css/images/markers/dot-e1264d.png
+    iconSize:
+      width: 17
+      height: 18
+    iconAnchor:
+      x: 9
+      y: 9
+  puck-purple:
+    iconUrl: /static/css/images/markers/dot-744edc.png
+    iconSize:
+      width: 17
+      height: 18
+    iconAnchor:
+      x: 9
+      y: 9
+  dropper-green:
+    iconUrl: /static/css/images/markers/marker-70d52c.png
+    shadowUrl: /static/css/images/marker-shadow.png
+    iconSize:
+      width: 25
+      height: 41
+    shadowSize:
+      width: 41
+      height: 41
+    iconAnchor:
+      x: 12
+      y: 41
+  dropper-blue:
+    iconUrl: /static/css/images/markers/marker-2654d2.png
+    shadowUrl: /static/css/images/marker-shadow.png
+    iconSize:
+      width: 25
+      height: 41
+    shadowSize:
+      width: 41
+      height: 41
+    iconAnchor:
+      x: 12
+      y: 41
+  dropper-yellow:
+    iconUrl: /static/css/images/markers/marker-dbcf2c.png
+    shadowUrl: /static/css/images/marker-shadow.png
+    iconSize:
+      width: 25
+      height: 41
+    shadowSize:
+      width: 41
+      height: 41
+    iconAnchor:
+      x: 12
+      y: 41
+  dropper-red:
+    iconUrl: /static/css/images/markers/marker-e1264d.png
+    shadowUrl: /static/css/images/marker-shadow.png
+    iconSize:
+      width: 25
+      height: 41
+    shadowSize:
+      width: 41
+      height: 41
+    iconAnchor:
+      x: 12
+      y: 41
+  dropper-purple:
+    iconUrl: /static/css/images/markers/marker-744edc.png
     shadowUrl: /static/css/images/marker-shadow.png
     iconSize:
       width: 25

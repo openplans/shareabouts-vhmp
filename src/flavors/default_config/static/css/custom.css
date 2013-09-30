@@ -17,7 +17,7 @@ body, select, input, textarea {
 -------------------------------------------------------------- */
 
 a, a:active, a:visited {
-/*  color: #ff40ff;*/
+  color: #005C20;
 }
 
 a:hover {
@@ -34,7 +34,7 @@ a:hover {
 }
 
 #site-header a, #site-header a:active, #site-header a:visited {
-/*  color: #ff80ff;*/
+  color: #005C20;
 }
 
 #site-header a:hover {
@@ -112,14 +112,14 @@ a#nav-bttn:hover {
 -------------------------------------------------------------- */
 
 a.add-place {
-/*  background-color: #ff40ff;*/
-/*  color: #eee;*/
+  background-color: #005C20;
+  color: #eee;*/
 /*  text-shadow: none;*/
 }
 
 a.add-place:hover {
-/*  background-color: #e500e5;*/
-/*  color: #fff;*/
+  background-color: #eee;
+  color: #005C20;
 }
 
 
