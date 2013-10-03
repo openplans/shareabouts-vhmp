@@ -186,12 +186,20 @@ place:
       attrs:
         - key: size
           value: 30
+        - key: required
+          value: true
     - prompt: _(What is it you like or dislike?)
       type: textarea
       name: description
+      attrs:
+        - key: required
+          value: true
     - prompt: _(What's your idea or suggestion?)
       type: textarea
       name: idea
+      attrs:
+        - key: required
+          value: true
     - prompt: _(Your full name)
       type: text
       name: submitter_name
@@ -199,6 +207,8 @@ place:
       attrs:
         - key: size
           value: 30
+        - key: required
+          value: true
     - prompt: _(Your address (will not be shown on the map))  
       type: text
       name: private-submitter_address
@@ -206,6 +216,8 @@ place:
       attrs:
         - key: size
           value: 30
+        - key: required
+          value: true
     - prompt: _(Your email (will not be shown on the map))
       type: text
       name: private-submitter_email
