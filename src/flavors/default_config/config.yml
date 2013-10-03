@@ -184,29 +184,19 @@ place:
       type: text
       name: name
       attrs:
-        - key: placeholder
-          value: _(Location Name)
         - key: size
           value: 30
     - prompt: _(What is it you like or dislike?)
       type: textarea
       name: description
-      attrs:
-        - key: placeholder
-          value: _(Description...)
     - prompt: _(What's your idea or suggestion?)
       type: textarea
       name: idea
-      attrs:
-        - key: placeholder
-          value: _(Your idea/suggestion)
     - prompt: _(Your full name)
       type: text
       name: submitter_name
       optional: false
       attrs:
-        - key: placeholder
-          value: _(Your name)
         - key: size
           value: 30
     - prompt: _(Your address (will not be shown on the map))  
@@ -214,16 +204,12 @@ place:
       name: private-submitter_address
       optional: false
       attrs:
-        - key: placeholder
-          value: _(Your address)
         - key: size
           value: 30
     - prompt: _(Your email (will not be shown on the map))
       type: text
       name: private-submitter_email
       attrs:
-        - key: placeholder
-          value: _(Your email)
         - key: size
           value: 30
 survey:
