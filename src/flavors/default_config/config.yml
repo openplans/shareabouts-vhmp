@@ -164,7 +164,7 @@ place:
   title: _(Tell us more...)
   action_text: _(identified)
   anonymous_name: _(Someone)
-  submit_button_label: _(Submit)
+  submit_button_label: _(Share)
   items:
     - prompt: _(What's your comment?)
       type: select
@@ -196,35 +196,34 @@ place:
           value: _(Description...)
     - prompt: _(What's your idea or suggestion?)
       type: textarea
-      name: description
+      name: idea
       attrs:
         - key: placeholder
           value: _(Your idea/suggestion)
-    - prompt: _(Your Name)
+    - prompt: _(Your full name)
       type: text
       name: submitter_name
-      optional: true
+      optional: false
       attrs:
         - key: placeholder
-          value: _(Name)
+          value: _(Your name)
+        - key: size
+          value: 30
+    - prompt: _(Your address (will not be shown on the map))  
+      type: text
+      name: private-submitter_address
+      optional: false
+      attrs:
+        - key: placeholder
+          value: _(Your address)
         - key: size
           value: 30
     - prompt: _(Your email (will not be shown on the map))
       type: text
       name: private-submitter_email
-      optional: true
       attrs:
         - key: placeholder
           value: _(Your email)
-        - key: size
-          value: 30
-    - prompt: _(Your address (will not be shown on the map))
-      type: text
-      name: private-submitter_address
-      optional: true
-      attrs:
-        - key: placeholder
-          value: _(Your address)
         - key: size
           value: 30
 survey:
