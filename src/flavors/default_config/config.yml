@@ -254,7 +254,7 @@ support:
   anonymous_name: _(Someone)
 
 pages:
-  - title: _(About)
+  - title: _(How to use)
     slug: about
     name: overview
     start_page: true
