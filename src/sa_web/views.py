@@ -70,7 +70,7 @@ def index(request, default_place_type):
         validated_default_place_type = ''
 
     # TODO These requests should be done asynchronously (in parallel).
-    places_json = api.get('places', default=u'[]')
+    places_json = api.get('places', page_size=1000, default=u'[]')
 
     # Get the content of the static pages linked in the menu.
     pages_config = config.get('pages', [])
