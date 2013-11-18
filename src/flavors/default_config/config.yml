@@ -1,9 +1,9 @@
 # Settings for the app
 app:
   # HTML Title
-  title: Virginia-Highland Master Plan 
+  title: Virginia-Highland Master Plan
   # Header name
-  name: Virginia-Highland Master Plan 
+  name: Virginia-Highland Master Plan
   # Meta description that will show up in Google search results
   meta_description: _(Use the map to record and share the things you love about Virginia-Highland and the things you want to see changed or fixed in Virginia-Highland.)
 
@@ -18,138 +18,83 @@ map:
     zoom: 17
     minZoom: 15
     maxZoom: 17
-  base_layer:
-    url: http://{s}.tiles.mapbox.com/v3/openplans.map-3piqzgdc/{z}/{x}/{y}.png
-    attribution: '&copy; OpenStreetMap contributors, CC-BY-SA. <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
-  layers: []
+  layers:
+    - url: http://{s}.tiles.mapbox.com/v3/openplans.map-3piqzgdc/{z}/{x}/{y}.png
+      attribution: '&copy; OpenStreetMap contributors, CC-BY-SA. <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
 
 # The keys show up in the dropdown list when you are adding a new place
 # The values map the place type to map icons (defined below).
 place_types:
   love:
-    default: puck-red
-    focused: dropper-red
     label: _(Things I love)
+    rules:
+      - condition: '"{{location_type}}" === "love"'
+        icon:
+          iconUrl: /static/css/images/markers/dot-e1264d.png
+          iconSize: [17, 18]
+          iconAnchor: [9, 9]
+        focus_icon:
+          iconUrl: /static/css/images/markers/marker-e1264d.png
+          shadowUrl: /static/css/images/marker-shadow.png
+          iconSize: [25, 41]
+          shadowSize: [41, 41]
+          iconAnchor: [12, 41]
   hate:
-    default: puck-blue
-    focused: dropper-blue
     label: _(Things I hate)
+    rules:
+      - condition: '"{{location_type}}" === "hate"'
+        icon:
+          iconUrl: /static/css/images/markers/dot-2654d2.png
+          iconSize: [17, 18]
+          iconAnchor: [9, 9]
+        focus_icon:
+          iconUrl: /static/css/images/markers/marker-2654d2.png
+          shadowUrl: /static/css/images/marker-shadow.png
+          iconSize: [25, 41]
+          shadowSize: [41, 41]
+          iconAnchor: [12, 41]
   solve:
-    default: puck-yellow
-    focused: dropper-yellow
     label: _(Problems to solve)
+    rules:
+      - condition: '"{{location_type}}" === "solve"'
+        icon:
+          iconUrl: /static/css/images/markers/dot-dbcf2c.png
+          iconSize: [17, 18]
+          iconAnchor: [9, 9]
+        focus_icon:
+          iconUrl: /static/css/images/markers/marker-dbcf2c.png
+          shadowUrl: /static/css/images/marker-shadow.png
+          iconSize: [25, 41]
+          shadowSize: [41, 41]
+          iconAnchor: [12, 41]
   preserve:
-    default: puck-green
-    focused: dropper-green
     label: _(Assets to preserve)
+    rules:
+      - condition: '"{{location_type}}" === "preserve"'
+        icon:
+          iconUrl: /static/css/images/markers/dot-70d52c.png
+          iconSize: [17, 18]
+          iconAnchor: [9, 9]
+        focus_icon:
+          iconUrl: /static/css/images/markers/marker-70d52c.png
+          shadowUrl: /static/css/images/marker-shadow.png
+          iconSize: [25, 41]
+          shadowSize: [41, 41]
+          iconAnchor: [12, 41]
   idea:
-    default: puck-purple
-    focused: dropper-purple
     label: _(An idea I have)
-# Defines place icons. See http://leaflet.cloudmade.com/reference.html#icon
-# for documention of each property. Any omitted property will be undefined.
-place_type_icons:
-  puck-green:
-    iconUrl: /static/css/images/markers/dot-70d52c.png
-    iconSize:
-      width: 17
-      height: 18
-    iconAnchor:
-      x: 9
-      y: 9
-  puck-blue:
-    iconUrl: /static/css/images/markers/dot-2654d2.png
-    iconSize:
-      width: 17
-      height: 18
-    iconAnchor:
-      x: 9
-      y: 9
-  puck-yellow:
-    iconUrl: /static/css/images/markers/dot-dbcf2c.png
-    iconSize:
-      width: 17
-      height: 18
-    iconAnchor:
-      x: 9
-      y: 9
-  puck-red:
-    iconUrl: /static/css/images/markers/dot-e1264d.png
-    iconSize:
-      width: 17
-      height: 18
-    iconAnchor:
-      x: 9
-      y: 9
-  puck-purple:
-    iconUrl: /static/css/images/markers/dot-744edc.png
-    iconSize:
-      width: 17
-      height: 18
-    iconAnchor:
-      x: 9
-      y: 9
-  dropper-green:
-    iconUrl: /static/css/images/markers/marker-70d52c.png
-    shadowUrl: /static/css/images/marker-shadow.png
-    iconSize:
-      width: 25
-      height: 41
-    shadowSize:
-      width: 41
-      height: 41
-    iconAnchor:
-      x: 12
-      y: 41
-  dropper-blue:
-    iconUrl: /static/css/images/markers/marker-2654d2.png
-    shadowUrl: /static/css/images/marker-shadow.png
-    iconSize:
-      width: 25
-      height: 41
-    shadowSize:
-      width: 41
-      height: 41
-    iconAnchor:
-      x: 12
-      y: 41
-  dropper-yellow:
-    iconUrl: /static/css/images/markers/marker-dbcf2c.png
-    shadowUrl: /static/css/images/marker-shadow.png
-    iconSize:
-      width: 25
-      height: 41
-    shadowSize:
-      width: 41
-      height: 41
-    iconAnchor:
-      x: 12
-      y: 41
-  dropper-red:
-    iconUrl: /static/css/images/markers/marker-e1264d.png
-    shadowUrl: /static/css/images/marker-shadow.png
-    iconSize:
-      width: 25
-      height: 41
-    shadowSize:
-      width: 41
-      height: 41
-    iconAnchor:
-      x: 12
-      y: 41
-  dropper-purple:
-    iconUrl: /static/css/images/markers/marker-744edc.png
-    shadowUrl: /static/css/images/marker-shadow.png
-    iconSize:
-      width: 25
-      height: 41
-    shadowSize:
-      width: 41
-      height: 41
-    iconAnchor:
-      x: 12
-      y: 41
-
+    rules:
+      - condition: '"{{location_type}}" === "idea"'
+        icon:
+          iconUrl: /static/css/images/markers/dot-744edc.png
+          iconSize: [17, 18]
+          iconAnchor: [9, 9]
+        focus_icon:
+          iconUrl: /static/css/images/markers/marker-744edc.png
+          shadowUrl: /static/css/images/marker-shadow.png
+          iconSize: [25, 41]
+          shadowSize: [41, 41]
+          iconAnchor: [12, 41]
 
 activity:
   # Optional. Activity is supported by default. Set to false to disable.
@@ -209,7 +154,7 @@ place:
           value: 30
         - key: required
           value: true
-    - prompt: _(Your address (will not be shown on the map))  
+    - prompt: _(Your address (will not be shown on the map))
       type: text
       name: private-submitter_address
       optional: false
