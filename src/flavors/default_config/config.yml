@@ -1,68 +1,100 @@
 # Settings for the app
 app:
   # HTML Title
-  title: Shareabouts
+  title: Virginia-Highland Master Plan
   # Header name
-  name: Shareabouts
+  name: Virginia-Highland Master Plan
   # Meta description that will show up in Google search results
-  meta_description: _(Shareabouts is a mapping tool to gather crowd sourced public input. Use it to collect suggested locations and comments in a social, engaging process.)
+  meta_description: _(Use the map to record and share the things you love about Virginia-Highland and the things you want to see changed or fixed in Virginia-Highland.)
 
 # Settings for map and layer configs
 map:
   geolocation_enabled: true
-  geolocation_onload: true
+  geolocation_onload: false
   options:
     center:
-      lat: 39.9523524
-      lng: -75.1636075
-    zoom: 14
-    minZoom: 10
+      lat: 33.782387
+      lng: -84.354342
+    zoom: 17
+    minZoom: 15
     maxZoom: 17
-  base_layer:
-    url: http://{s}.tiles.mapbox.com/v3/openplans.map-dmar86ym/{z}/{x}/{y}.png
-    attribution: '&copy; OpenStreetMap contributors, CC-BY-SA. <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
-  layers: []
+  layers:
+    - url: http://{s}.tiles.mapbox.com/v3/openplans.map-3piqzgdc/{z}/{x}/{y}.png
+      attribution: '&copy; OpenStreetMap contributors, CC-BY-SA. <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
 
 # The keys show up in the dropdown list when you are adding a new place
 # The values map the place type to map icons (defined below).
 place_types:
-  landmark:
-    default: blue
-    focused: red
-    label: _(Landmark)
-  park:
-    default: blue
-    focused: red
-    label: _(Park)
-  school:
-    default: blue
-    focused: red
-    label: _(School)
-
-# Defines place icons. See http://leaflet.cloudmade.com/reference.html#icon
-# for documention of each property. Any omitted property will be undefined.
-place_type_icons:
-  blue:
-    iconUrl: /static/css/images/feature-point.png
-    iconSize:
-      width: 17
-      height: 18
-    iconAnchor:
-      x: 9
-      y: 9
-  red:
-    iconUrl: /static/css/images/marker-focused.png
-    shadowUrl: /static/css/images/marker-shadow.png
-    iconSize:
-      width: 25
-      height: 41
-    shadowSize:
-      width: 41
-      height: 41
-    iconAnchor:
-      x: 12
-      y: 41
-
+  love:
+    label: _(Things I love)
+    rules:
+      - condition: '"{{location_type}}" === "love"'
+        icon:
+          iconUrl: /static/css/images/markers/dot-e1264d.png
+          iconSize: [17, 18]
+          iconAnchor: [9, 9]
+        focus_icon:
+          iconUrl: /static/css/images/markers/marker-e1264d.png
+          shadowUrl: /static/css/images/marker-shadow.png
+          iconSize: [25, 41]
+          shadowSize: [41, 41]
+          iconAnchor: [12, 41]
+  hate:
+    label: _(Things I hate)
+    rules:
+      - condition: '"{{location_type}}" === "hate"'
+        icon:
+          iconUrl: /static/css/images/markers/dot-2654d2.png
+          iconSize: [17, 18]
+          iconAnchor: [9, 9]
+        focus_icon:
+          iconUrl: /static/css/images/markers/marker-2654d2.png
+          shadowUrl: /static/css/images/marker-shadow.png
+          iconSize: [25, 41]
+          shadowSize: [41, 41]
+          iconAnchor: [12, 41]
+  solve:
+    label: _(Problems to solve)
+    rules:
+      - condition: '"{{location_type}}" === "solve"'
+        icon:
+          iconUrl: /static/css/images/markers/dot-dbcf2c.png
+          iconSize: [17, 18]
+          iconAnchor: [9, 9]
+        focus_icon:
+          iconUrl: /static/css/images/markers/marker-dbcf2c.png
+          shadowUrl: /static/css/images/marker-shadow.png
+          iconSize: [25, 41]
+          shadowSize: [41, 41]
+          iconAnchor: [12, 41]
+  preserve:
+    label: _(Assets to preserve)
+    rules:
+      - condition: '"{{location_type}}" === "preserve"'
+        icon:
+          iconUrl: /static/css/images/markers/dot-70d52c.png
+          iconSize: [17, 18]
+          iconAnchor: [9, 9]
+        focus_icon:
+          iconUrl: /static/css/images/markers/marker-70d52c.png
+          shadowUrl: /static/css/images/marker-shadow.png
+          iconSize: [25, 41]
+          shadowSize: [41, 41]
+          iconAnchor: [12, 41]
+  idea:
+    label: _(An idea I have)
+    rules:
+      - condition: '"{{location_type}}" === "idea"'
+        icon:
+          iconUrl: /static/css/images/markers/dot-744edc.png
+          iconSize: [17, 18]
+          iconAnchor: [9, 9]
+        focus_icon:
+          iconUrl: /static/css/images/markers/marker-744edc.png
+          shadowUrl: /static/css/images/marker-shadow.png
+          iconSize: [25, 41]
+          shadowSize: [41, 41]
+          iconAnchor: [12, 41]
 
 activity:
   # Optional. Activity is supported by default. Set to false to disable.
@@ -72,56 +104,71 @@ activity:
 
 place:
   adding_supported: true
-  add_button_label: _(Add a Place)
+  add_button_label: _(Share what you know)
   action_text: _(added)
   title: _(Tell us more...)
-  action_text: _(created)
+  action_text: _(identified)
   anonymous_name: _(Someone)
-  submit_button_label: _(Submit)
+  submit_button_label: _(Share)
   items:
-    - prompt: _(Location Name)
+    - prompt: _(What's your comment?)
+      type: select
+      options:
+        - label: _(Something I love)
+          value: love
+        - label: _(Something I hate)
+          value: hate
+        - label: _(A problem to solve)
+          value: solve
+        - label: _(An asset to preserve)
+          value: preserve
+        - label: _(An idea I have!)
+          value: idea
+      name: location_type
+    - prompt: _(Where is it?)
       type: text
       name: name
       attrs:
-        - key: placeholder
-          value: _(Location Name)
         - key: size
           value: 30
-    - prompt: _(Location Type)
-      type: select
-      options:
-        - label: _(Landmark)
-          value: landmark
-        - label: _(Park)
-          value: park
-        - label: _(School)
-          value: school
-      name: location_type
-    - prompt: _(Image)
-      inputfile_label: _(Add an Image)
-      type: file
-      name: my_image
-      optional: true
-      attrs:
-        - key: accept
-          value: image/*
-    - prompt: _(Your Name)
-      type: text
-      name: submitter_name
-      optional: true
-      attrs:
-        - key: placeholder
-          value: _(Name)
-        - key: size
-          value: 30
-    - prompt: _(Description)
+        - key: required
+          value: true
+    - prompt: _(What is it you like or dislike?)
       type: textarea
       name: description
-      optional: true
       attrs:
-        - key: placeholder
-          value: _(Description...)
-
+        - key: required
+          value: true
+    - prompt: _(What's your idea or suggestion?)
+      type: textarea
+      name: idea
+      attrs:
+        - key: required
+          value: true
+    - prompt: _(Your full name)
+      type: text
+      name: submitter_name
+      optional: false
+      attrs:
+        - key: size
+          value: 30
+        - key: required
+          value: true
+    - prompt: _(Your address (will not be shown on the map))
+      type: text
+      name: private-submitter_address
+      optional: false
+      attrs:
+        - key: size
+          value: 30
+        - key: required
+          value: true
+    - prompt: _(Your email (will not be shown on the map))
+      type: text
+      name: private-submitter_email
+      attrs:
+        - key: size
+          value: 30
 survey:
   submission_type: comments
 
@@ -152,19 +199,7 @@ support:
   anonymous_name: _(Someone)
 
 pages:
-  - title: _(About)
+  - title: _(How to use)
     slug: about
     name: overview
     start_page: true
-
-  - title: _(Why Shareabouts?)
-    slug: why
-    url: /static/pages/why.html
-
-  - title: _(Features)
-    slug: features
-    url: /static/pages/features.html
-
-  - title: _(Feedback)
-    external: true
-    url: https://openplans.zendesk.com/anonymous_requests/new

@@ -1,0 +1,37 @@
+{{> place-detail-promotion-bar }}
+
+<header class="place-header clearfix">
+  <h1>{{ name }}</h1>
+  <span class="place-submission-details">
+    {{#_}}<strong class="point-submitter">
+      {{#if submitter}}
+        <img src="{{ submitter.avatar_url }}" class="avatar" /> {{ submitter.name }}
+      {{^}}
+        <!-- TODO: FIXME: don't hardcode image URL -->
+        <img src="/static/css/images/user-50.png" class="avatar" /> {{ submitter_name }}
+      {{/if}}
+    </strong> added this {{# place_type_label }}{{ place_type_label }}{{/ place_type_label}}
+                         {{^ place_type_label }}place{{/ place_type_label}}
+    {{#region}}
+      in {{ region }}
+    {{/region}}{{/_}}
+
+    <time datetime="{{ created_datetime }}" class="response-date">{{ pretty_created_datetime }}</time>.
+  </span>
+</header>
+
+<section class="place-items">
+
+  {{#if description }}
+  <p><strong>What is it you like or dislike?</strong> {{ description }}</p>
+  {{/if }}
+  
+  {{#if idea }}
+  <p><strong>What's your idea or suggestion?</strong> {{ idea }}</p>
+  {{/if }}
+  
+</section>
+
+{{#survey_config}}
+<section class="survey"></section>
+{{/survey_config}}

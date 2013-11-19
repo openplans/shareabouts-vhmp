@@ -1,3 +1,5 @@
+/*globals _ Spinner Handlebars Backbone jQuery */
+
 var Shareabouts = Shareabouts || {};
 
 (function(S, $, console){
@@ -18,10 +20,11 @@ var Shareabouts = Shareabouts || {};
     render: function(){
       // Augment the model data with place types for the drop down
       var data = _.extend({
-        place_config: this.options.placeConfig
+        place_config: this.options.placeConfig,
+        current_user: S.currentUser
       }, this.model.toJSON());
 
-      this.$el.html(ich['place-form'](data));
+      this.$el.html(Handlebars.templates['place-form'](data));
       return this;
     },
     remove: function() {
@@ -42,9 +45,9 @@ var Shareabouts = Shareabouts || {};
       });
 
       // Get the location attributes from the map
-      attrs.location = {
-        lat: center.lat,
-        lng: center.lng
+      attrs.geometry = {
+        type: 'Point',
+        coordinates: [center.lng, center.lat]
       };
 
       return attrs;
@@ -90,18 +93,26 @@ var Shareabouts = Shareabouts || {};
           model = this.model,
           // Should not include any files
           attrs = this.getAttrs(),
-          $fileInputs;
+          $button = this.$('[name="save-place-btn"]'),
+          spinner, $fileInputs;
 
       evt.preventDefault();
+
+      $button.attr('disabled', 'disabled');
+      spinner = new Spinner(S.smallSpinnerOptions).spin(this.$('.form-spinner')[0]);
 
       // Save and redirect
       this.model.save(attrs, {
         success: function() {
           router.navigate('/place/' + model.id, {trigger: true});
         },
+        complete: function() {
+          $button.removeAttr('disabled');
+          spinner.stop();
+        },
         wait: true
       });
     }
   });
 
-})(Shareabouts, jQuery, Shareabouts.Util.console);
+}(Shareabouts, jQuery, Shareabouts.Util.console));
